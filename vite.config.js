@@ -1,6 +1,13 @@
-import { defineConfig } from "vite";
 import wasm from "vite-plugin-wasm";
 
-export default defineConfig({
+/** @type {import("vite").UserConfig} */
+const config = {
   plugins: [wasm()],
-});
+};
+
+if ("REPOSITORY" in process.env) {
+  config.base = `/${process.env.REPOSITORY}/`;
+}
+
+export default config;
+
