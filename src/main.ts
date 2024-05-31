@@ -1,9 +1,16 @@
 import "./style.css";
 import { WebViewer } from "@rerun-io/web-viewer";
 
-const rrd =
-  new URLSearchParams(location.search).get("url") ||
-  "https://demo.rerun.io/version/0.11.0/examples/structure_from_motion/data.rrd";
-const viewer = new WebViewer();
-viewer.start(rrd);
+async function main() {
+  const viewer = new WebViewer();
+  await viewer.start(undefined, document.getElementById("app"), { allow_fullscreen: true });
+
+  globalThis._viewer = viewer;
+}
+
+declare global {
+  var _viewer: WebViewer | null;
+}
+
+main();
 
