@@ -3,6 +3,6 @@
 Sample [Vite](https://vitejs.dev/) app which opens a web viewer pointing to an `.rrd` file.
 
 ```
-$ npm i
-$ npm run dev
+$ yarn i
+$ yarn run dev
 ```
