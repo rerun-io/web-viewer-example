@@ -23,6 +23,8 @@ canvas {
   margin-left: auto;
   display: block;
   position: absolute;
+  width: 100%;
+  height: 100%;
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -114,3 +116,4 @@ a .button {
   transition: opacity 0.2s ease-in;
   visibility: visible;
 }
+
