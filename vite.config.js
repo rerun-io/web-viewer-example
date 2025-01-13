@@ -1,5 +1,10 @@
+// @ts-check
+
 import wasm from "vite-plugin-wasm";
 import topLevelAwait from "vite-plugin-top-level-await";
+import { searchForWorkspaceRoot } from "vite";
+import fs from "node:fs";
+import path from "node:path";
 
 /** @type {import("vite").UserConfig} */
 const config = {
@@ -10,6 +15,13 @@ const config = {
   },
   server: {
     port: 5173,
+    fs: {
+      allow: [
+        searchForWorkspaceRoot(process.cwd()),
+        // NOTE: hack to allow `new URL("file://...")` in `web-viewer` when it is a linked package
+        fs.realpathSync(path.join(__dirname, "node_modules", "@rerun-io/web-viewer")),
+      ],
+    },
   },
 };
 
